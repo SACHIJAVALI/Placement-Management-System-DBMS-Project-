@@ -39,7 +39,7 @@ if (isset($_POST['search'])) {
 		$jobs[$key]->recruiter = $recruiter;
 	}
 } else {
-	$sql = "SELECT * FROM jobs ORDER BY id DESC LIMIT 0,10";
+	$sql = "SELECT * FROM jobs WHERE status = 'Verified' ORDER BY id DESC LIMIT 0,10";
 	$res = $db->query($sql);
 
 	$jobs = [];
@@ -140,7 +140,7 @@ while ($row = $res->fetch_object()) {
 								<div class="form-group">
 									<select name="city">
 										<option>Select City</option>
-										<?php foreach ($cities as $city) : ?>
+										<?php foreach ($cities as $city): ?>
 											<option value="<?php echo $city->id ?>"> <?php echo $city->name ?></option>
 										<?php endforeach ?>
 									</select>
@@ -150,7 +150,7 @@ while ($row = $res->fetch_object()) {
 								<div class="form-group">
 									<select name="sector">
 										<option>Select Sector</option>
-										<?php foreach ($sectors as $sector) : ?>
+										<?php foreach ($sectors as $sector): ?>
 											<option value="<?php echo $sector->id ?>"> <?php echo $sector->name ?></option>
 										<?php endforeach ?>
 									</select>
@@ -174,13 +174,14 @@ while ($row = $res->fetch_object()) {
 					<h2 class="m-b5">Recent Jobs</h2>
 				</div>
 				<div class="align-self-end">
-					<a href="./browse-job.php" class="site-button button-sm">Browse All Jobs <i class="fa fa-long-arrow-right"></i></a>
+					<a href="./browse-job.php" class="site-button button-sm">Browse All Jobs <i
+							class="fa fa-long-arrow-right"></i></a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-9">
 					<ul class="list-unstyled">
-						<?php foreach ($jobs as $job) : ?>
+						<?php foreach ($jobs as $job): ?>
 							<li class="mb-4">
 								<a href="./job-detail.php?id=<?php echo $job->id ?>" class="text-decoration-none text-dark">
 									<div class="card job-card border-0 shadow-sm">
@@ -188,16 +189,21 @@ while ($row = $res->fetch_object()) {
 											<div class="d-flex align-items-center">
 												<!-- Company Logo -->
 												<div class="job-post-company me-3">
-													<img src="images/logo/icon1.png" class="rounded-circle border p-1 bg-light shadow-sm" width="60" height="60" alt="Company Logo">
+													<img src="images/logo/icon1.png"
+														class="rounded-circle border p-1 bg-light shadow-sm" width="60"
+														height="60" alt="Company Logo">
 												</div>
 												<div class="job-post-info flex-grow-1">
-													<h5 class="mb-1 fw-bold"><?php echo htmlspecialchars($job->title) ?></h5>
+													<h5 class="mb-1 fw-bold"><?php echo htmlspecialchars($job->title) ?>
+													</h5>
 													<ul class="list-inline text-muted small mb-2">
 														<li class="list-inline-item">
-															<i class="fa fa-map-marker text-danger"></i> <?php echo htmlspecialchars($job->city) ?>
+															<i class="fa fa-map-marker text-danger"></i>
+															<?php echo htmlspecialchars($job->city) ?>
 														</li>
 														<li class="list-inline-item">
-															<i class="fa fa-bookmark text-primary"></i> <?php echo htmlspecialchars($job->type) ?>
+															<i class="fa fa-bookmark text-primary"></i>
+															<?php echo htmlspecialchars($job->type) ?>
 														</li>
 														<li class="list-inline-item">
 															<i class="fa fa-clock-o text-success"></i>
@@ -211,7 +217,8 @@ while ($row = $res->fetch_object()) {
 											</div>
 
 											<div class="d-flex justify-content-between align-items-center mt-3">
-												<span class="badge bg-primary text-white py-2 px-3"><?php echo htmlspecialchars($job->type) ?></span>
+												<span
+													class="badge bg-primary text-white py-2 px-3"><?php echo htmlspecialchars($job->type) ?></span>
 												<span class="text-success fw-bold fs-5">
 													Rs-<?php echo number_format($job->ctc, 2, '.', ',') ?>/-
 												</span>

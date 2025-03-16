@@ -26,6 +26,7 @@ if (isset($_POST['login'])) {
     } else {
         # LOGIN AS USER
         $sql = "SELECT * FROM users WHERE email = '$email'";
+        //echo $sql;die;
         $res = $db->query($sql);
         if ($res->num_rows == 0) {
             $error = "No user found";

@@ -7,6 +7,7 @@ $user = $_SESSION['user'];
 
 $jobs = [];
 $usertype =  $_SESSION['type'];
+//print_r($usertype);die;
 if ($usertype == 'recruiter') {
     $sql = "select * from jobs where recruiter = '$user->id'";
     $res = $db->query($sql);
@@ -25,17 +26,18 @@ if ($usertype == 'recruiter') {
         }
     }*/
 
-    $sql = "SELECT j.*, aj.status 
+    $sql = "SELECT j.*, aj.status, aj.applied_on 
         FROM applied_jobs aj 
         INNER JOIN jobs j ON aj.job_id = j.id 
         WHERE aj.candidate_id = '$user->id'";
-
+    //echo $sql;die;
     $res = $db->query($sql);
     $jobs = [];
 
     while ($row = $res->fetch_object()) {
         $jobs[] = $row; // Now $row contains job details + status from applied_jobs
     }
+    //print_r($jobs);die;
 }
 
 
@@ -70,7 +72,7 @@ if (isset($_GET['delete'])) {
                                     <?php foreach ($jobs as $job) : ?>
                                         <tr>
                                             <td><strong><?php echo htmlspecialchars($job->title); ?></strong></td>
-                                            <td><strong><?php $apply_date = date("Y-m-d", strtotime($job->created_at));
+                                            <td><strong><?php $apply_date = date("Y-m-d", strtotime($job->applied_on));
                                                         echo $apply_date;
                                                         ?></strong></td>
                                             <td><strong><?php echo htmlspecialchars($job->status); ?></strong></td>

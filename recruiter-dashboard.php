@@ -8,7 +8,7 @@ $user = $_SESSION['user'];
 $jobs = [];
 $usertype =  $_SESSION['type'];
 if ($usertype == 'recruiter') {
-    $sql = "select * from jobs where recruiter = '$user->id'";
+    $sql = "select * from jobs where recruiter = '$user->id' AND status = 'Verified'";
     $res = $db->query($sql);
     while ($row = $res->fetch_object()) {
         $jobs[] = $row;
@@ -24,6 +24,17 @@ if ($usertype == 'recruiter') {
         }
     }
 }
+//print_r($jobs);die;
+$sql = "SELECT count(id) as total_pending_jobs FROM jobs where recruiter = '$user->id' AND status = 'Verified'";
+$res = $db->query($sql);
+$total_pending_jobs = $res->fetch_object()->total_pending_jobs;
+
+$sql = "SELECT count(id) as total_posted_jobs FROM jobs where recruiter = '$user->id'";
+$res = $db->query($sql);
+$total_posted_jobs = $res->fetch_object()->total_posted_jobs;
+
+
+
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $sql = "delete from jobs where id = '$id'";
@@ -40,13 +51,13 @@ if (isset($_GET['delete'])) {
         <!-- product -->
         <div class="container">
             <div class="container-fluid">
-          
+           <h4>You have <span style="color:red"><?php echo $total_pending_jobs ?> Jobs</span> pending for verification</h4>
                 <div class="row">
                     
                     <div class="col-xl-3 col-md-6 col-lg-6">
                         <div class="card bg-primary text-white mb-4">
                             <div class="card-body">Total Posted Jobs</div>
-                            <span style="margin-left:40px"><?php echo 1 ?></span><br>
+                            <span style="margin-left:40px"><?php echo $total_posted_jobs ?></span><br>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 <a class="small text-white stretched-link" href="">View Details</a>
                                

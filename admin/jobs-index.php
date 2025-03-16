@@ -67,6 +67,7 @@ while ($row = $res->fetch_object()) {
                            
                             <th >Job Id</th>
                             <th width="20%">Job Title</th>
+                            <th width="20%">Status</th>
                             <th width="20%">Description</th>
                            
                             <th width="35%">Action</th>
@@ -79,6 +80,10 @@ while ($row = $res->fetch_object()) {
                        
                             <td><?php echo $j->id ?></td>
                             <td><?php echo $j->title ?></td>
+                            <?php $j->status == 'Pending' ? $labelColor =  'info' : $labelColor = 'success' ?>
+                            <td><span
+                                    class="badge badge-<?php echo $labelColor ?>"><?php echo $j->status ?></span>
+                            </td>
                         
                             <?php
                                 $sql = "SELECT description, LEFT(description, 20) FROM jobs WHERE id = '$j->id'";

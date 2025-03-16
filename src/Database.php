@@ -8,7 +8,7 @@ class Database
     private static $host = 'localhost';
     private static $user = 'root';
     private static $password = '';
-    private static $db = 'jobportal';
+    private static $db = 'placement';
 
     public static function getInstance()
     {
