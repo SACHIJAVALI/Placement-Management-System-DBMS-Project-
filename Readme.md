@@ -352,12 +352,3 @@ PDF resume storage directory for candidate resumes. Stores uploaded resume files
 **Architecture**: MVC-inspired with template-based structure  
 **Database**: MySQL/MariaDB  
 
----
-
-## 📞 Support
-
-For issues or questions, refer to the project documentation or contact the development team.
-
----
-
-*Last Updated: 2025*
