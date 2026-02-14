@@ -43,7 +43,7 @@ if (isset($_POST['search'])) {
 } else {
 
 
-	$sql = "SELECT * FROM jobs ORDER BY id DESC";
+	$sql = "SELECT * FROM jobs WHERE status='Verified' ORDER BY id DESC";
 	$res = $db->query($sql);
 
 

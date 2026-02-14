@@ -70,18 +70,13 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name']) || !isset($_SESSION['
                 </a>
             </li>
             <li class="nav-item font-weight-bold dash-hover">
-                <a class="nav-link" href="./recruiter-index.php">
-                    <i class="fas fa-fw fa-clock"></i>
-                    <span>Manage Recruiters</span></a>
-            </li>
-            <li class="nav-item font-weight-bold dash-hover">
                 <a class="nav-link" href="./jobs-index.php">
                     <i class="fas fa-fw fa-print"></i>
                     <span>Current Openings</span></a>
             </li>
 
             <li class="nav-item font-weight-bold dash-hover">
-                <a class="nav-link" href="./jobs-index.php">
+                <a class="nav-link" href="./selected-students.php">
                     <i class="fas fa-fw fa-print"></i>
                     <span>Selected students</span></a>
             </li>
@@ -89,6 +84,11 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name']) || !isset($_SESSION['
                 <a class="nav-link" href="./users-index.php">
                     <i class="fas fa-fw fa-edit"></i>
                     <span>Students</span></a>
+            </li>
+            <li class="nav-item font-weight-bold dash-hover">
+                <a class="nav-link" href="./recruiter-index.php">
+                    <i class="fas fa-fw fa-clock"></i>
+                    <span>Manage Recruiters</span></a>
             </li>
             <li class="nav-item font-weight-bold dash-hover">
                 <a class="nav-link" href="./sector-index.php">
