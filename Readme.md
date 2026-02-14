@@ -1,4 +1,4 @@
-# Placement Portal - Complete Project Documentation
+# Placement Portal - Complete Project Documentation.
 
 ## 📋 Project Overview
 A comprehensive job placement portal system built with PHP and MySQL, designed to connect job seekers with recruiters. The system supports three user roles: Admin, Recruiter, and Candidate, each with distinct functionalities and access levels.
